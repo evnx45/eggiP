@@ -3,12 +3,22 @@ import 'package:get/get.dart';
 import 'package:latihan_4/service/remoteservice.dart';
 
 class BooksController extends GetxController {
-  var books = <BooksModel>[].obs;
+  BooksService _booksService = BooksService();
+  var books = <BooksModel>[];
 
-  void fetchDummyData() async {
-    var product = await BooksService.fetchBooks();
-    if (product != null) {
-      books.value = product;
+  @override
+  void onInit() {
+    getBooks();
+    super.onInit();
+  }
+
+  void getBooks() async {
+    _booksService.getBooksModel().then((value) {
+      books = value;
+      update();
+    });
+  }
+}
 
       // books.add(BooksModel(
       //     id: 1,
@@ -53,6 +63,6 @@ class BooksController extends GetxController {
       //   fetchDummyData();
       //   super.onInit();
       // }
-    }
-  }
-}
+//     }
+//   }
+// }
