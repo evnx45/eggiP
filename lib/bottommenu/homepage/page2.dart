@@ -9,6 +9,7 @@ import 'package:latihan_4/widget/recommendselect.dart';
 
 class SearcH extends StatefulWidget {
   final reController = Get.put(RecommendController());
+
   SearcH({Key? key}) : super(key: key);
 
   @override
@@ -16,17 +17,19 @@ class SearcH extends StatefulWidget {
 }
 
 class _SearcHState extends State<SearcH> {
+  final bookCon = Get.put(BooksController());
   final _formKey = GlobalKey<FormState>();
+
   Widget latestSearch() {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Row(
-          children: BooksModel.booksmodel
+          children: bookCon.books
               .asMap()
               .entries
-              .map((MapEntry map) =>
-                  LatestSearch(infoo: BooksModel.booksmodel[map.key]))
+              .map(
+                  (MapEntry map) => LatestSearch(infoo: bookCon.books[map.key]))
               .toList()),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:latihan_4/bottommenu/bottommenu%20copy/bottommenu.dart';
+import 'package:latihan_4/bottommenu/homepage/bottommenu.dart';
 import 'package:latihan_4/profilepage.dart';
 
 class Setting extends StatefulWidget {
@@ -28,7 +28,7 @@ class _SettingState extends State<Setting> {
               color: Colors.black,
             ),
             onTap: () {
-              Get.to(Bottommenu());
+              Get.to(Homepage());
             },
           ),
         ),

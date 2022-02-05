@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:latihan_4/bottommenu/bottommenu%20copy/bottommenu.dart';
+import 'package:latihan_4/bottommenu/homepage/bottommenu.dart';
 import 'package:latihan_4/errorpage.dart';
 import 'package:latihan_4/homepage1.dart';
 
@@ -14,7 +14,7 @@ class Loading extends StatefulWidget {
 class _LoadingState extends State<Loading> {
   next() {
     Future.delayed(Duration(seconds: 4), () async {
-      Get.to(() => Bottommenu());
+      Get.to(() => Homepage());
     });
   }
 

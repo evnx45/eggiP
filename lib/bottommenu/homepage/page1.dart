@@ -21,6 +21,7 @@ class One extends StatefulWidget {
 }
 
 class _OneState extends State<One> {
+  final bookCon = Get.put(BooksController());
   int selectedValue = 0;
 
   Widget bestSeller() {
@@ -28,11 +29,10 @@ class _OneState extends State<One> {
       scrollDirection: Axis.horizontal,
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Row(
-          children: BooksModel.booksmodel
+          children: bookCon.books
               .asMap()
               .entries
-              .map((MapEntry map) =>
-                  BestSeller(infoo: BooksModel.booksmodel[map.key]))
+              .map((MapEntry map) => BestSeller(infoo: bookCon.books[map.key]))
               .toList()),
     );
   }
@@ -42,11 +42,10 @@ class _OneState extends State<One> {
       scrollDirection: Axis.horizontal,
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Row(
-          children: BooksModel.booksmodel
+          children: bookCon.books
               .asMap()
               .entries
-              .map((MapEntry map) =>
-                  NewRelease(infoo: BooksModel.booksmodel[map.key]))
+              .map((MapEntry map) => NewRelease(infoo: bookCon.books[map.key]))
               .toList()),
     );
   }
@@ -56,11 +55,10 @@ class _OneState extends State<One> {
       scrollDirection: Axis.horizontal,
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Row(
-          children: BooksModel.booksmodel
+          children: bookCon.books
               .asMap()
               .entries
-              .map((MapEntry map) =>
-                  TrendingNow(infoo: BooksModel.booksmodel[map.key]))
+              .map((MapEntry map) => TrendingNow(infoo: bookCon.books[map.key]))
               .toList()),
     );
   }
@@ -141,21 +139,20 @@ class _OneState extends State<One> {
                           SizedBox(
                             height: 300,
                             child: ListView.builder(
-                                itemCount: BooksModel.booksmodel.length,
+                                itemCount: bookCon.books.length,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
-                                  BooksModel booksModel =
-                                      BooksModel.booksmodel[index];
+                                  BooksModel booksModel = bookCon.books[index];
                                   return GestureDetector(
                                     onTap: () =>
-                                        Get.to(Detail(idBook: booksModel.id)),
+                                        Get.to(Detail(idBook: booksModel.id!)),
                                     child: Container(
                                       height: 100,
                                       width: 195,
                                       decoration: BoxDecoration(
                                           image: DecorationImage(
                                               image: NetworkImage(
-                                                  booksModel.image))),
+                                                  booksModel.image!))),
                                       margin: EdgeInsets.all(10),
                                     ),
                                   );

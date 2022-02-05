@@ -12,6 +12,7 @@ class Library extends StatefulWidget {
 }
 
 class _LibraryState extends State<Library> {
+  final bookCon = Get.put(BooksController());
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
@@ -44,20 +45,20 @@ class _LibraryState extends State<Library> {
           ),
           Expanded(
               child: ListView.builder(
-                  itemCount: BooksModel.booksmodel.length,
+                  itemCount: bookCon.books.length,
                   itemBuilder: (context, index) {
-                    BooksModel booksModel = BooksModel.booksmodel[index];
+                    BooksModel booksModel = bookCon.books[index];
                     return GestureDetector(
-                      onTap: () => Get.to(Detail(idBook: booksModel.id)),
+                      onTap: () => Get.to(Detail(idBook: booksModel.id!)),
                       child: Card(
                         margin: EdgeInsets.symmetric(vertical: 10),
                         shadowColor: Colors.transparent,
                         child: ListTile(
                           leading: Image.network(
-                            booksModel.image,
+                            booksModel.image!,
                           ),
-                          title: Text(booksModel.title),
-                          subtitle: Text(booksModel.subtitle),
+                          title: Text(booksModel.judulbuku!),
+                          subtitle: Text(booksModel.pengarang!),
                         ),
                       ),
                     );

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:latihan_4/bottommenu/bottommenu%20copy/bottommenu.dart';
-import 'package:latihan_4/bottommenu/bottommenu%20copy/page2.dart';
-import 'package:latihan_4/bottommenu/bottommenu%20copy/page3.dart';
+import 'package:latihan_4/bottommenu/homepage/bottommenu.dart';
+import 'package:latihan_4/bottommenu/homepage/page2.dart';
+import 'package:latihan_4/bottommenu/homepage/page3.dart';
 import 'package:latihan_4/confirmationpage.dart';
 import 'package:latihan_4/detailpage.dart';
 import 'package:latihan_4/errorpage.dart';
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Bottommenu(),
+      home: Homepage(),
       // routes: {Detail.nameRoute :(context) => Detail()},
     );
   }

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:latihan_4/bottommenu/bottommenu%20copy/page1.dart';
-import 'package:latihan_4/bottommenu/bottommenu%20copy/page2.dart';
-import 'package:latihan_4/bottommenu/bottommenu%20copy/page3.dart';
+import 'package:latihan_4/bottommenu/homepage/page1.dart';
+import 'package:latihan_4/bottommenu/homepage/page2.dart';
+import 'package:latihan_4/bottommenu/homepage/page3.dart';
 import 'package:latihan_4/settingspage.dart';
 
-class Bottommenu extends StatefulWidget {
-  const Bottommenu({Key? key}) : super(key: key);
+class Homepage extends StatefulWidget {
+  const Homepage({Key? key}) : super(key: key);
 
   @override
-  _BottommenuState createState() => _BottommenuState();
+  _HomepageState createState() => _HomepageState();
 }
 
-class _BottommenuState extends State<Bottommenu> {
+class _HomepageState extends State<Homepage> {
   int currentIndex = 0;
   final List<Widget> body = [One(), SearcH(), Library()];
 

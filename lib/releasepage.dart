@@ -14,6 +14,7 @@ class ReleaSe extends StatefulWidget {
 }
 
 class _ReleaSeState extends State<ReleaSe> {
+  final bookCon = Get.put(BooksController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,9 +40,9 @@ class _ReleaSeState extends State<ReleaSe> {
                 crossAxisCount: 2,
                 mainAxisSpacing: 15,
                 crossAxisSpacing: 15,
-                itemCount: BooksModel.booksmodel.length,
+                itemCount: bookCon.books.length,
                 itemBuilder: (context, index) {
-                  BooksModel booksModel = BooksModel.booksmodel[index];
+                  BooksModel booksModel = bookCon.books[index];
                   return GestureDetector(
                       onTap: () => Get.to(Detail(idBook: hashCode)),
                       child: Container(
@@ -52,11 +53,11 @@ class _ReleaSeState extends State<ReleaSe> {
                               width: 160,
                               decoration: BoxDecoration(
                                   image: DecorationImage(
-                                      image: NetworkImage(booksModel.image))),
+                                      image: NetworkImage(booksModel.image!))),
                             ),
                             Center(
                               child: Text(
-                                booksModel.title,
+                                booksModel.judulbuku!,
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,

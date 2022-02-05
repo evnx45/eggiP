@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:latihan_4/bottommenu/bottommenu%20copy/bottommenu.dart';
+import 'package:latihan_4/bottommenu/homepage/bottommenu.dart';
 import 'package:latihan_4/controller/bookscontroller.dart';
 import 'package:latihan_4/model/booksmodel.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -10,18 +10,19 @@ import 'package:latihan_4/widget/genreselect.dart';
 
 class Detail extends StatelessWidget {
   int idBook;
+  final bookCon = Get.find<BooksController>();
 
   Detail({Key? key, required this.idBook}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var selectedData = BooksModel.booksmodel.firstWhere((e) => e.id == idBook);
+    var selectedData = bookCon.books.firstWhere((e) => e.id == idBook);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 90,
         centerTitle: true,
         title: Text(
-          "${selectedData.title}",
+          "${selectedData.judulbuku}",
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
@@ -32,7 +33,7 @@ class Detail extends StatelessWidget {
             color: Colors.black,
           ),
           onTap: () {
-            Get.to(Bottommenu());
+            Get.to(Homepage());
           },
         ),
       ),
@@ -49,7 +50,7 @@ class Detail extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Center(
               child: Text(
-                "${selectedData.title}",
+                "${selectedData.judulbuku}",
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
               ),
             ),
@@ -58,15 +59,13 @@ class Detail extends StatelessWidget {
             padding: const EdgeInsets.only(left: 25),
             child: Row(children: [
               Text(
-                "${selectedData.subtitle}",
+                "${selectedData.pengarang}",
               ),
             ]),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25),
             child: RatingBar.builder(
-              initialRating: selectedData.rating,
-              minRating: 1,
               direction: Axis.horizontal,
               allowHalfRating: true,
               itemCount: 5,
@@ -85,14 +84,7 @@ class Detail extends StatelessWidget {
             child: Row(
               children: [
                 Container(
-                  height: 45,
-                  width: 350,
-                  child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: selectedData.genre.length,
-                      itemBuilder: (context, index) =>
-                          BooksSelect(genreselect: selectedData.genre[index])),
-                ),
+                    height: 45, width: 350, child: Text(selectedData.genre!)),
               ],
             ),
           ),
@@ -150,7 +142,7 @@ class Detail extends StatelessWidget {
             padding: const EdgeInsets.only(left: 25, right: 25),
             child: Column(
               children: [
-                Text(selectedData.summary),
+                Text(selectedData.deskripsi!),
               ],
             ),
           ),
